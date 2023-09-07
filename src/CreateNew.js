@@ -2,17 +2,21 @@ import Header from './Header';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { withAuth0 } from '@auth0/auth0-react';
+
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 const OPENAI_MODEL = 'gpt-3.5-turbo-0613';
 
 function CreateNew() {
+
   const [formData, setFormData] = useState({
     race: '',
     class: '',
     gender: '',
     personality: '',
   });
+
   const [generatedStory, setGeneratedStory] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
@@ -70,49 +74,51 @@ function CreateNew() {
     generateStory();
   };
 
-const randomizeAll = () => {
-  const randomValues = {
-     race: [
-      'Human', 'Elf', 'Dwarf', 'Orc', 'Goblin', 'Troll', 'Halfling',
-      'Gnome', 'Undead', 'Minotaur', 'Centaur', 'Fairy', 'Merfolk', 'Dragonkin'
-    ],
-     class: [
-      'Warrior', 'Mage', 'Rogue', 'Priest', 'Druid', 'Warlock', 'Paladin',
-      'Hunter', 'Monk', 'Bard', 'Necromancer', 'Summoner', 'Alchemist', 'Sorcerer'
-    ],
-    gender: ['Male', 'Female', 'Non-binary', 'Other'],
-     personality: [
-      'Brave', 'Wise', 'Mysterious', 'Charming', 'Resourceful', 'Honorable',
-      'Loyal', 'Adventurous', 'Stoic', 'Eloquent', 'Fearless', 'Empathic', 'Cunning', 'Resilient'
-    ]
-  };
+  const randomizeAll = () => {
+    const randomValues = {
+      race: [
+        'Human', 'Elf', 'Dwarf', 'Orc', 'Goblin', 'Troll', 'Halfling',
+        'Gnome', 'Undead', 'Minotaur', 'Centaur', 'Fairy', 'Merfolk', 'Dragonkin'
+      ],
+      class: [
+        'Warrior', 'Mage', 'Rogue', 'Priest', 'Druid', 'Warlock', 'Paladin',
+        'Hunter', 'Monk', 'Bard', 'Necromancer', 'Summoner', 'Alchemist', 'Sorcerer'
+      ],
+      gender: ['Male', 'Female', 'Non-binary', 'Other'],
+      personality: [
+        'Brave', 'Wise', 'Mysterious', 'Charming', 'Resourceful', 'Honorable',
+        'Loyal', 'Adventurous', 'Stoic', 'Eloquent', 'Fearless', 'Empathic', 'Cunning', 'Resilient'
+      ]
+    };
 
-  setFormData({
-    race: randomValues.race[Math.floor(Math.random() * randomValues.race.length)],
-    class: randomValues.class[Math.floor(Math.random() * randomValues.class.length)],
-    gender: randomValues.gender[Math.floor(Math.random() * randomValues.gender.length)],
-    personality: randomValues.personality[Math.floor(Math.random() * randomValues.personality.length)],
-  });
-};
+    setFormData({
+      race: randomValues.race[Math.floor(Math.random() * randomValues.race.length)],
+      class: randomValues.class[Math.floor(Math.random() * randomValues.class.length)],
+      gender: randomValues.gender[Math.floor(Math.random() * randomValues.gender.length)],
+      personality: randomValues.personality[Math.floor(Math.random() * randomValues.personality.length)],
+    });
+  };
 
   const handleSubmit = () => {
     console.log('Form Submitted', formData);
   };
-const handleCreateButtonClick = async () => {
-  try {
-    const imageElement = document.querySelector('img[alt="Placeholder"]');
-    const storyElement = document.querySelector('textarea[placeholder="Your story here..."]');
-    const characterData = {
-      ...formData,
-      generatedStory: generatedStory, // or directly from storyElement.value if necessary
-      imageUrl: imageElement ? imageElement.src : ''
-    };
-    const response = await axios.post('YOUR_SERVER_URL/character', characterData);
-    console.log('Character created:', response.data);
-  } catch (error) {
-    console.error('Error creating character:', error);
-  }
-};
+
+  const handleCreateButtonClick = async () => {
+    try {
+      const imageElement = document.querySelector('img[alt="Placeholder"]');
+      const storyElement = document.querySelector('textarea[placeholder="Your story here..."]');
+      const characterData = {
+        ...formData,
+        generatedStory: generatedStory, // or directly from storyElement.value if necessary
+        imageUrl: imageElement ? imageElement.src : ''
+      };
+      const response = await axios.post('YOUR_SERVER_URL/character', characterData);
+      console.log('Character created:', response.data);
+    } catch (error) {
+      console.error('Error creating character:', error);
+    }
+  };
+
   return (
 <div><Header />
    <div className="container">
@@ -170,11 +176,11 @@ const handleCreateButtonClick = async () => {
           <button onClick={generateStory} disabled={isLoading} className="btn btn-primary btn-block mt-2" > {isLoading ? 'Generating...' : 'Generate Story'} </button>
          </div>
       </div>
-      <button onClick={handleCreateButtonClick} className="btn btn-primary btn-block mt-3">Publish Character</button>
+      <button onClick={handleCreateButtonClick} className="btn btn-primary btn-block mt-3">Save Character</button>
     </div>
   </div>
     </div>
   );
 }
 
-export default CreateNew;
+export default withAuth0(CreateNew);
