@@ -7,10 +7,13 @@ import Profile from './Profile';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LoggedinComponent from './LoggedinComponent';
+import AuthButtons from './auth/AuthButtons';
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  function oauthSignIn() {
+  function OLDoauthSignIn() {
     // Google's OAuth 2.0 endpoint for requesting an access token
     var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
 
@@ -42,6 +45,10 @@ function App() {
     document.body.appendChild(form);
     form.submit();
   }
+  function oauthSignIn() {
+    console.log('deprecated function, check code');
+  }
+
 
   useEffect(() => {
     // Check if the user is logged in by checking the URL for an access token
@@ -53,15 +60,18 @@ function App() {
     <Router>
       <div className="App">
         {isLoggedIn ? (
-          <Routes>
-            <Route path="/about" element={<About />} />
-             <Route path="/profile" element={<Profile />} />
-             <Route path="/creations" element={<Creations />} />
-             <Route path="/CreateNew" element={<CreateNew />} />
-            <Route path="/" element={<LoggedinComponent />} />
-          </Routes>
+          <>
+            <AuthButtons />
+            <Routes>
+              <Route path="/about" element={<About />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/creations" element={<Creations />} />
+              <Route path="/CreateNew" element={<CreateNew />} />
+              <Route path="/" element={<LoggedinComponent />} />
+            </Routes>
+          </>
         ) : (
-          <button onClick={oauthSignIn}>Login with Google</button>
+          <button onClick={OLDoauthSignIn}>Login with Google</button>
         )}
       </div>
     </Router>

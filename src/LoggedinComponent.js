@@ -21,8 +21,14 @@ return (
 
       <div className="main">
 <Header />
-<img src='./images/lorecraft.png' alt='logo' />
-    </div>
+<div className="container">
+         <div className="row">
+      <div className="col-md-5">
+            <div style={{ border: '1px solid #000', background:'#fff', padding: '10px', boxShadow: '0px 0px 10px #000', maxWidth: '100%', margin: '0 auto' }}>
+
+<img src='./images/lorecraft.png' alt='logo' className='loggedinimage'/>
+    </div>  </div>  </div>  </div> </div>
+
   );
 };
 

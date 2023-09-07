@@ -1,15 +1,16 @@
 .profile-container {
-  display: flex;
-  justify-content: space-around;
-}
 
+}
+.col-md-6 {width:75%;}
 .profile {
-  width: 200px;
+  width: 150px;
+  margin:20px;
   text-align: center;
+  display: inline-block;
 }
 
 .profile img {
-  width: 100%;
+  width: 150px;
   height: auto;
 }
 

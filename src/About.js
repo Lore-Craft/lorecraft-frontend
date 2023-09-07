@@ -12,14 +12,19 @@ function About() {
   return (
     <div>
     <Header />
-    <div className="profile-container">
+    <div className="container">
+         <div className="row">
+      <div className="col-md-10">
+      <div style={{ border: '1px solid #000', background:'#fff', padding: '10px', boxShadow: '0px 0px 10px #000', maxWidth: '100%', margin: '0 auto' }}>
+   
+
       {profiles.map((profile, index) => (
         <div key={index} className="profile">
           <img src={profile.imgSrc} alt={profile.name} />
           <h2>{profile.name}</h2>
           <textarea value={profile.info} readOnly />
         </div>
-      ))}
+      ))}    </div>    </div>    </div>
     </div></div>
   );
 }
