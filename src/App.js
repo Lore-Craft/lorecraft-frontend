@@ -3,7 +3,7 @@ import React, {Component } from 'react';
 import About from './About';
 import CreateNew from './CreateNew';
 import Creations from './Creations';
-import Profile from './Profile';
+// import Profile from './Profile';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LoggedinComponent from './LoggedinComponent';
@@ -44,7 +44,7 @@ class App extends Component {
           
               <Routes>
                 <Route path="/about" element={<About />} />
-                <Route path="/profile" element={<Profile />} />
+                {/* <Route path="/profile" element={<Profile />} /> */}
                 <Route path="/creations" element={<Creations />} />
                 <Route path="/CreateNew" element={<CreateNew />} />
                 <Route path="/" element={<LoggedinComponent />} />
