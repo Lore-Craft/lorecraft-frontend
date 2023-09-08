@@ -3,8 +3,9 @@ import Header from './Header';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect,useCallback } from 'react';
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import { withAuth0, useAuth0 } from '@auth0/auth0-react';
 
@@ -20,9 +21,9 @@ function CreateNew() {
     const { user, getAccessTokenSilently, getIdTokenClaims } = useAuth0();
   const [generatedImage, setGeneratedImage] = React.useState(""); // Assuming this is a state variable, initialize it accordingly
 
-
+/* eslint-disable no-unused-vars */
   const [token, setToken] = useState(null);
-
+/* eslint-disable no-unused-vars */
   useEffect(() => {
     const getToken = async () => {
       let res = await getIdTokenClaims();
