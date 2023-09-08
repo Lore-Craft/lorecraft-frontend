@@ -1,7 +1,18 @@
 .App {
   text-align: center;
+} 
+.carousel-indicators{
+position: inherit;
+margin-right: 0%; 
+    margin-bottom: 0rem; 
+  margin-left: 0%;
 }
-
+.carousel-item {    background: white;}
+body {
+  background-image: url('./floor.png');
+  background-repeat: repeat;
+  background-size: auto;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -12,7 +23,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.loggedinimage{max-width:400px;}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -21,9 +32,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* color: white; */
 }
-
+.carousel-control-prev{background:black; width: 50px;}
+.carousel-control-next{background:black; width: 50px;}
+.carousel-indicators{background:black;}
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +48,37 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Apply these styles in your CSS file */
+
+/* Navigation bar */
+.navbar {
+  background: #FEF3E2;
+  font-family: 'Fantasy', cursive;
+  font-size: 16px;
+  color: #4E3629;
+}
+
+/* Navigation links */
+.nav-link {
+  color: #6B4226 !important;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Navbar brand (logo) */
+.navbar-brand img {
+  width: 100px; /* Adjust the width as needed */
+  height: auto;
+}
+
+/* Toggle button icon */
+.navbar-toggler-icon {
+  background-color: #6B4226;
+}
+
+/* Toggle button when active */
+.navbar-toggler:focus {
+  outline: none;
 }

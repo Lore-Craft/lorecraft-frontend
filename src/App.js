@@ -1,74 +1,62 @@
-import Header from './Header';
-import React, { useState, useEffect } from 'react';
+
+import React, {Component } from 'react';
 import About from './About';
 import CreateNew from './CreateNew';
 import Creations from './Creations';
-import Profile from './Profile';
+// import Profile from './Profile';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LoggedinComponent from './LoggedinComponent';
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  function oauthSignIn() {
-    // Google's OAuth 2.0 endpoint for requesting an access token
-    var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
 
-    // Create <form> element to submit parameters to OAuth 2.0 endpoint.
-    var form = document.createElement('form');
-    form.setAttribute('method', 'GET'); // Send as a GET request.
-    form.setAttribute('action', oauth2Endpoint);
+import { withAuth0 } from '@auth0/auth0-react';
 
-    // Parameters to pass to OAuth 2.0 endpoint.
-    var params = {
-      'client_id': '818715484116-lk0u6hiqoi4s4rgt559pq7i3v7p06eep.apps.googleusercontent.com',  // Replace with your client ID
-      'redirect_uri': 'http://localhost:3000/',  // Replace with your redirect URI
-      'response_type': 'token',
-      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-      'include_granted_scopes': 'true',
-      'state': 'pass-through value'
+
+
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false,
     };
-
-    // Add form parameters as hidden input values.
-    for (var p in params) {
-      var input = document.createElement('input');
-      input.setAttribute('type', 'hidden');
-      input.setAttribute('name', p);
-      input.setAttribute('value', params[p]);
-      form.appendChild(input);
-    }
-
-    // Add form to page and submit it to open the OAuth 2.0 endpoint.
-    document.body.appendChild(form);
-    form.submit();
   }
 
-  useEffect(() => {
+  oauthSignIn = () => {
+    console.log('deprecated function, check code');
+  }
+
+  componentDidMount() {
     // Check if the user is logged in by checking the URL for an access token
-   // if (window.location.hash.includes('access_token')) {
-      setIsLoggedIn(true);
-   // }
-  }, []);
-  return (
-    <Router>
-      <div className="App">
-        {isLoggedIn ? (
-          <Routes>
-            <Route path="/about" element={<About />} />
-             <Route path="/profile" element={<Profile />} />
-             <Route path="/creations" element={<Creations />} />
-             <Route path="/CreateNew" element={<CreateNew />} />
-            <Route path="/" element={<LoggedinComponent />} />
-          </Routes>
-        ) : (
-          <button onClick={oauthSignIn}>Login with Google</button>
-        )}
-      </div>
-    </Router>
-  );
+    // if (window.location.hash.includes('access_token')) {
+      this.setState({ isLoggedIn: true });
+    // }
+  }
+
+  render() {
+    const { isLoggedIn } = this.state;
+ 
+    return (
+      <Router>
+        <div className="App">
+          {isLoggedIn ? (
+            <>
+          
+              <Routes>
+                <Route path="/about" element={<About />} />
+                {/* <Route path="/profile" element={<Profile />} /> */}
+                <Route path="/creations" element={<Creations />} />
+                <Route path="/CreateNew" element={<CreateNew />} />
+                <Route path="/" element={<LoggedinComponent />} />
+              </Routes>
+            </>
+          ) : (
+           'HELLO'
+          )}
+        </div>
+      </Router>
+    );
+  }
 }
 
-export default App;
-
-
-
+export default withAuth0(App);

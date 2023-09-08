@@ -1,22 +1,37 @@
+import { useAuth0 } from '@auth0/auth0-react'; // Import the useAuth0 hook
+
 import React from 'react';
-import About from './About';
-import CreateNew from './CreateNew';
-import Creations from './Creations';
-import Profile from './Profile';
+
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
 import './Header.css';
+import AuthButtons from './auth/AuthButtons';
+
 const Header = () => {
+    const { isAuthenticated } = useAuth0(); // Call the useAuth0 hook to get the isAuthenticated variable
+
   return (
-    <header className="bg-light">
-      <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <Link to="/" className="navbar-brand"><img className="logo" src='./images/logo.png' alt='logo' /></Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+  <header className="bg-light">
+  <div className="container">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link to="/" className="navbar-brand">
+        <img className="logo" src='./images/logo.png' alt='logo' />
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav ml-auto">
+          {isAuthenticated ? (
+            <>
               <li className="nav-item">
                 <Link to="/" className="nav-link">Home</Link>
               </li>
@@ -29,14 +44,20 @@ const Header = () => {
               <li className="nav-item">
                 <Link to="/Creations" className="nav-link">Creations</Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/Profile" className="nav-link">Profile</Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
+              </li> */}
+              <AuthButtons />
+            </>
+          ) : (
+            <AuthButtons />
+          )}
+        </ul>
       </div>
-    </header>
+    </nav>
+  </div>
+</header>
+
   );
 };
 
