@@ -15,7 +15,7 @@ const SERVER_URL='https://lorecraft.onrender.com'
 
 function CreateNew() {
   const { user, getIdTokenClaims } = useAuth0();
-  const [setToken] = useState(null);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const getToken = async () => {
