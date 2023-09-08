@@ -9,7 +9,7 @@ function LogoutButton() {
   } = useAuth0();
 
   function handleLogout() {
-    logout({ returnTo: 'https://www.example.com' });
+    logout({ returnTo: 'https://lorecraft.netlify.app/' });
   }
 
   return isAuthenticated &&
