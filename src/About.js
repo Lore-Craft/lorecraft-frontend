@@ -5,7 +5,7 @@ import './About.css';
 function About() {
   const profiles = [
     { name: "Nika Skeba", info: "AI Artist, Coding, Design", imgSrc: "./images/Profile1.png" },
-    { name: "Paul Brown", info: "Engineer --> Entrepreneur --> Engineer", imgSrc: "./images/Profile2.png" },
+    { name: "Paul Brown", info: "Engineer --> Entrepreneur --> Engineer!", imgSrc: "./images/Profile2.png" },
     { name: "Ekaterina Khoroshilova", info: "Software Developer | Code Fellows Student", imgSrc: "./images/Profile3.png" },
   ];
 
