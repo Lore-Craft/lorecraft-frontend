@@ -15,7 +15,7 @@ const SERVER_URL='https://lorecraft.onrender.com'
 
 function CreateNew() {
   const { user, getIdTokenClaims } = useAuth0();
-  const [otherToken, setToken] = useState(null);
+  const [setToken] = useState(null);
 
   useEffect(() => {
     const getToken = async () => {
@@ -38,7 +38,7 @@ function CreateNew() {
     };
 
     getToken();
-  }, [getIdTokenClaims]);
+  }, [getIdTokenClaims, setToken]);
 
   const [formData, setFormData] = useState({
     race:"",

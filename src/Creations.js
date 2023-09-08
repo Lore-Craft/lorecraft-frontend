@@ -13,11 +13,7 @@ const SERVER_URL='https://lorecraft.onrender.com'
 const Creations = () => {
 const { user, getIdTokenClaims } = useAuth0();
   const [editingCharacter, setEditingCharacter] = useState(null);
-  const handleEditButtonClick = (character) => {
-  console.log('Editing character:', character);
-  setEditingCharacter(character);
 
-};
   const [characters, setCharacters] = useState([]);
 
 const fetchAllCharacters = useCallback(async () => {
