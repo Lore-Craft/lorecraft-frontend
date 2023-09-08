@@ -9,7 +9,7 @@ function LogoutButton() {
   } = useAuth0();
 
   function handleLogout() {
-    logout({ returnTo: window.location.origin });
+    logout({ returnTo: 'https://www.example.com' });
   }
 
   return isAuthenticated &&
