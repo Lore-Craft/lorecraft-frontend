@@ -206,10 +206,10 @@ const handleCreateButtonClick = async () => {
 
     // Handle the response from the server (you might want to display a success message or handle errors)
     if (response.status === 201) {
-      console.log('Character created successfully');
+      alert('Character created successfully');
       // ... (other success handling code)
     } else {
-      console.error('Failed to create character');
+      alert('Failed to create character');
       // ... (other error handling code)
     }
   } catch (error) {
