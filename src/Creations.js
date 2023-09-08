@@ -13,6 +13,7 @@ const SERVER_URL='https://lorecraft.onrender.com'
 const Creations = () => {
 const { user, getIdTokenClaims } = useAuth0();
   const [editingCharacter, setEditingCharacter] = useState(null);
+const { getAccessTokenSilently } = useAuth0();
 
   const [characters, setCharacters] = useState([]);
 
@@ -79,9 +80,17 @@ const handleEditClick = async (userEmail, updatedCharacterData) => {
 
 
 const handleDeleteClick = async (characterId) => {
-  try {
+  
+try {
+    const token = await getAccessTokenSilently(); // Get the token
+
     // Send a DELETE request to the server with the character ID in the URL
-    const response = await axios.delete(`${SERVER_URL}/character/${characterId}`);
+    const response = await axios.delete(`${SERVER_URL}/character/${characterId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
     if (response.status === 200) {
       console.log('Character deleted successfully');
       // ... (other success handling code)
