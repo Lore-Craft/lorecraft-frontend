@@ -1,7 +1,10 @@
-# LoreCraft
-
 LoreCraft is an innovative app that leverages the power of GPT-3 and AI imaging to provide users with a seamless experience in creating unique characters and their backstories instantly. Crafted with React.js, it integrates various components to streamline the process of character creation, letting users delve deeper into the realm of creativity.
 
+## Live Demo
+Currently hosted on Netlify - <a href="https://lorecraft.netlify.app/">Link</a>
+
+## Screenshots
+<img style="width:400px;" src="https://i.ibb.co/mNQtVGg/Screen-Shot-2023-09-14-at-10-19-46-AM.png"> <img style="width:400px;" src="https://i.ibb.co/3RFBBhc/Screen-Shot-2023-09-14-at-10-21-04-AM.png">
 ## Features
 
 ### Instant Character Creation
