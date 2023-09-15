@@ -1,7 +1,12 @@
+# About
+
 LoreCraft is an innovative app that leverages the power of GPT-3 and AI imaging to provide users with a seamless experience in creating unique characters and their backstories instantly. Crafted with React.js, it integrates various components to streamline the process of character creation, letting users delve deeper into the realm of creativity.
 
 ## Live Demo
 Currently hosted on Netlify - <a href="https://lorecraft.netlify.app/">Link</a>
+
+### Version
+Current version: v1.0
 
 ## Screenshots
 <img style="width:400px;" src="https://i.ibb.co/mNQtVGg/Screen-Shot-2023-09-14-at-10-19-46-AM.png"> <img style="width:400px;" src="https://i.ibb.co/3RFBBhc/Screen-Shot-2023-09-14-at-10-21-04-AM.png">
@@ -21,13 +26,20 @@ Utilize the secure Auth0 authentication system to protect your data and creation
 To get started with LoreCraft, follow these steps:
 
 1. Clone the repository
-git clone <repository_url>
+
+> `git clone <repository_url>`
+
 2. Navigate to the project directory
-cd lorecraft
+
+> `cd lorecraft`
+
 3. Install the necessary packages
-npm install
+
+> `npm install`
+
 4. Run the app
-npm start
+
+> `npm start`
 
 
 ## Technology Stack
@@ -56,6 +68,17 @@ Navigate through the app using the following routes:
 - `/createnew`: Dive into the creation process and start crafting your characters.
 - `/creations`: View and manage your repository of created characters.
 
+## Data Required
+- Character name: charName: { type: String, required: true }
+- Character vlass: classType: { type: String, required: true },
+- Character alignment: { type: String, required: true },
+- Character race: {type: String, required: true},
+- Character's gender: { type: String, required: true },
+- URL of image (AI generated): imageURL: { type: String, required: true },
+- Character backstory (AI generated): { type: String, required: true },
+- Your email (same as your login details): userEmail: { type: String, required: true}
+
+
 ## Contributing
 
 We welcome contributions to LoreCraft. Before contributing, please read through our contributing guidelines (link to the guidelines).
@@ -65,5 +88,10 @@ We welcome contributions to LoreCraft. Before contributing, please read through 
 Include details about the license here (e.g., MIT, GPL).
 
 ## Contact
+
+- [Ekaterina]()
+- [Nika]()
+- [Paul]()
+
 
 
