@@ -89,9 +89,7 @@ Include details about the license here (e.g., MIT, GPL).
 
 ## Contact
 
-- [Ekaterina]()
-- [Nika]()
-- [Paul]()
-
-
+- [Ekaterina](https://www.linkedin.com/in/ekaterina-khoroshilova)
+- [Nika](https://www.linkedin.com/in/nicholas-skeba)
+- [Paul](https://www.linkedin.com/in/tallpaulbrown/)
 
