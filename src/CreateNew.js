@@ -10,6 +10,7 @@ import axios from 'axios';
 import { withAuth0, useAuth0 } from '@auth0/auth0-react';
 
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+console.log('new file is running');
 
 const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 const OPENAI_IMAGE_API_ENDPOINT = 'https://api.openai.com/v1/images/generations';
@@ -119,7 +120,7 @@ function CreateNew() {
       const response = await axios.post(
         OPENAI_IMAGE_API_ENDPOINT,
         {
-          model: 'image-alpha-001', 
+          model: 'dall-e-3', 
           prompt: `Create a high-quality portrait of a ${formData.gender} ${formData.race} ${formData.classType} character with a ${formData.personality} alignment in a realistic fantasy setting. Please provide an image with a high resolution`,
           n: 1,
           size: '256x256',
