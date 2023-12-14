@@ -114,12 +114,13 @@ function CreateNew() {
 
   const generateImage = async () => {
     setIsLoadingImg(true);
+    console.log('new image generation model activated (Dall-E-3)');
   
     try {
       const response = await axios.post(
         OPENAI_IMAGE_API_ENDPOINT,
         {
-          model: 'image-alpha-001', 
+          model: 'dall-e-3', 
           prompt: `Create a high-quality portrait of a ${formData.gender} ${formData.race} ${formData.classType} character with a ${formData.personality} alignment in a realistic fantasy setting. Please provide an image with a high resolution`,
           n: 1,
           size: '256x256',
