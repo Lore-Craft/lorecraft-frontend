@@ -1,7 +1,5 @@
 import Header from './Header';
 
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect,useCallback } from 'react';
@@ -10,6 +8,9 @@ import axios from 'axios';
 import { withAuth0, useAuth0 } from '@auth0/auth0-react';
 
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+// const apiKey = process.env.OPENAI_API_KEY;
+// console.log('API Key: ', apiKey);
+
 
 const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 const OPENAI_IMAGE_API_ENDPOINT = 'https://api.openai.com/v1/images/generations';
@@ -114,7 +115,7 @@ function CreateNew() {
 
   const generateImage = async () => {
     setIsLoadingImg(true);
-    console.log('new image generation model activated (Dall-E-3)');
+    // console.log('NEeW image generation model activated (Dall-E-3). API Key: ', apiKey);
   
     try {
       const response = await axios.post(
@@ -123,7 +124,7 @@ function CreateNew() {
           model: 'dall-e-3', 
           prompt: `Create a high-quality portrait of a ${formData.gender} ${formData.race} ${formData.classType} character with a ${formData.personality} alignment in a realistic fantasy setting. Please provide an image with a high resolution`,
           n: 1,
-          size: '256x256',
+          size: '1024x1024',
         },
         {
           headers: {
